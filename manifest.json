@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Novel Downloader EPUB – Safe",
+  "version": "2.4.4",
+  "description": "Novel Downloader EPUB – tải theo khoảng chương, giữ tiến độ, tải nhiều khoảng chương và xuất EPUB thủ công khi cần.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads",
+    "alarms",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://bhttpo.top/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Novel Downloader EPUB",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://bhttpo.top/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

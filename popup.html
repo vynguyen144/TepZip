@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Novel Downloader</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header><div class="title">📚 Novel Downloader</div><div id="badge" class="badge idle">Sẵn sàng</div></header>
+
+<section class="card">
+  <div class="row"><b>Trang hiện tại</b><button id="scan">🔎 Quét chương</button></div>
+  <div id="story" class="muted">Chưa quét</div>
+  <div id="scanInfo" class="muted"></div>
+</section>
+
+<section class="card rangeCard">
+  <b>🎯 Chọn khoảng chương cần tải</b>
+  <div class="range-row">
+    <label for="rangeStart">Từ chương <input id="rangeStart" type="number" min="1" value="1" step="1"></label>
+    <label for="rangeEnd">Đến chương <input id="rangeEnd" type="number" min="1" value="1" step="1"></label>
+  </div>
+  <div class="muted">Quét danh sách một lần, rồi chọn từng khoảng. Xuất EPUB là thao tác riêng, không bắt buộc sau mỗi khoảng.</div>
+</section>
+
+<section class="card">
+  <label for="delay">⏳ Thời gian chờ giữa các chương</label>
+  <div class="delayrow">
+    <select id="delay">
+      <option value="30">30 giây (nhanh nhất; có thể bị giới hạn)</option>
+      <option value="45">45 giây</option>
+      <option value="60" selected>60 giây</option>
+      <option value="90">90 giây</option>
+      <option value="120">120 giây</option>
+      <option value="180">180 giây</option>
+      <option value="300">5 phút</option>
+      <option value="600">10 phút</option>
+    </select>
+    <span class="muted">Website có thể yêu cầu lâu hơn.</span>
+  </div>
+</section>
+
+<section class="card progressCard">
+  <div class="progressTop"><b id="statusTitle">Chưa bắt đầu</b><b id="percent">0%</b></div>
+  <div class="bar"><div id="bar"></div></div>
+  <div id="count">0 / 0 chương</div>
+  <div id="current" class="current">—</div>
+  <div id="timer" class="muted">Đã chạy: 00:00</div>
+  <div id="eta" class="muted">Ước tính còn: —</div>
+  <div id="wait" class="wait"></div>
+</section>
+
+<section class="actions">
+  <button id="start" class="primary" disabled>▶ Bắt đầu tải</button>
+  <button id="pause" disabled>⏸ Tạm dừng</button>
+  <button id="cancel" disabled>✕ Hủy</button>
+</section>
+<section class="utility-actions">
+<button id="retryBlocked" class="retryBlocked" hidden>↻ Thử lại sau khi hết chặn</button>
+<button id="exportPartial" class="exportPartial">📦 Xuất EPUB phần đã tải</button>
+</section>
+
+<section class="card logCard">
+  <b>Nhật ký</b>
+  <div id="log" class="log"></div>
+</section>
+
+<footer>V2.4.3 • Tải theo khoảng chương; xuất EPUB không làm mất tiến độ.</footer>
+<script src="popup.js"></script>
+</body>
+</html>
